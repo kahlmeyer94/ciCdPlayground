@@ -11,8 +11,8 @@ new App({
     // What do you associate with the term 'CI/CD'?
     associations: ["Automation"],
     // Which CI/CD tools do you use in your project?
-    tools: "Jenkins, maybe?",
+    tools: "Dont know yet",
     // What do you want to learn in this workshop?
-    expectations: ["what you are talking about"],
+    expectations: ["Learn about CI/CD pipelines."],
   },
 });

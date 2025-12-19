@@ -5,9 +5,18 @@ pipeline {
     }
 
     stages {
+
+        
+
         stage('install') {
             steps {
                 sh 'yarn'
+            }
+        }
+
+        stage('unit-test') {
+            steps {
+                sh 'yarn test'
             }
         }
 
@@ -17,9 +26,8 @@ pipeline {
             }
         }
 
-        stage('test') {
+        stage('integration-test') {
             steps {
-                sh 'yarn test'
                 sh 'yarn test:e2e'
             }
         }
@@ -47,6 +55,13 @@ pipeline {
                     pluginFailureResultConstraint: 'FAILURE', 
                     profileName: 'role-based-access', 
                     userMetadata: []
+            }
+        }
+
+        post {
+            always {
+                junit stdioRetention: 'ALL',
+                testResults: '**/reports/**/*.xml'
             }
         }
     }
